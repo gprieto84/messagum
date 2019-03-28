@@ -16,7 +16,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -32,7 +32,7 @@ def logout():
 @bp.route('/register', methods=['GET','POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     form = RegisterForm()
     if form.validate_on_submit():
         u = User(username=form.username.data.lower(), email = form.email.data, first_name = form.first_name.data, last_name=form.last_name.data)
