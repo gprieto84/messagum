@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <br>
+    {% if not current_user.is_anonymous %}
+    <a href="{{url_for('main.compose')}}">Send new message</a>
+    <br>
+    <h3>Messages</h3><br>
+    {% if messages|length > 0 %}
+        
+        <ul>
+            {% for m in messages%}
+            <li> <a href="{{url_for('main.message', message_id=m.id)}}">  Message from {{m.sender.email}} at {{m.timestamp}} </a> </li>
+            {% endfor %}
+        </ul>
+    {% else%}
+    <div><p>You don't have any messages</p></div>
+    {% endif %}
+    {% endif %}
+   
+{% endblock %}

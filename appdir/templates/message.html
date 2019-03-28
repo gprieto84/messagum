@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% if not current_user.is_anonymous %}
+        {% if message %}
+            {{message.decrypted_message()}}
+        {% endif %}
+    {% endif %}
+{% endblock %}
