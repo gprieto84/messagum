@@ -32,7 +32,11 @@ def create_app(config_class=Config):
     from appdir.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    if not app.debug and not app.testing:
+    if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
+    else:
         if not os.path.exists('logs'):
                 os.mkdir('logs')
 
