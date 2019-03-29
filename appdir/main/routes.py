@@ -53,8 +53,8 @@ def dbdump():
     form =  DbdumpForm()
     if form.validate_on_submit():
         with gzip.open('appdir/backupII.gz', 'wb') as f:
-            c = delegator.run('pg_dump -h localhost -p 5432 -U postgres messagum')
+            c = delegator.run('pg_dump -h ec2-54-221-236-144.compute-1.amazonaws.com  -p 5432 -U zbeqpqsdybgayo d4479enh5uj46n')
             f.write(c.out.encode('utf-8'))
-        return send_file('appdir/backupII.gz', as_attachment=True)
+        return send_file('backupII.gz', as_attachment=True)
     return render_template('dbdump.html', title='Dbdump', form=form)
 
