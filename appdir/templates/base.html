@@ -2,6 +2,7 @@
 
 {% block title %}
     {% if title %}{{ title }} - Messagum{% else %}Welcome to Messagum{% endif %}
+
 {% endblock %}
 
 {% block navbar %}
@@ -45,7 +46,7 @@
         {% endwith %}
 
         {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+       {% block app_content %}{% endblock %}
     </div>
 
     {% block footer %}

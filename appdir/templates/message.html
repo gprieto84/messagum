@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    <h1>Message:</h1> <br>
     {% if not current_user.is_anonymous %}
         {% if message %}
             {{message.decrypted_message()}}
         {% endif %}
     {% endif %}
+    <br><br><br>
+    <p>
+    <a href="{{url_for('main.index')}}">Back to Home</a>    
+    </p>
 {% endblock %}
