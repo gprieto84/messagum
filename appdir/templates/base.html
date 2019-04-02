@@ -34,6 +34,7 @@
 {% endblock %}
 
 {% block content %}
+{{super()}}
     <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -46,4 +47,15 @@
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+
+    {% block footer %}
+  <footer class="text-muted">
+    <div class="container">
+      <p></p>        
+      <p>© 2019 Copyright - Cyber Security - German Prieto + Cesar Vasquez</p>
+      <p>Github: <a href="https://github.com/gprieto84/messagum" target="_blank">messagum repository</a>.</p>
+    </div>
+  </footer>
 {% endblock %}
+{% endblock %}
+
